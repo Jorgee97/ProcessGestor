@@ -47,6 +47,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnStart = new System.Windows.Forms.Button();
+            this.cincoMenoresTiemposDeDuracionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ordenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -66,7 +68,9 @@
             this.informesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.procesosCreadosPorUsuarioToolStripMenuItem,
             this.procesosConMayorDuracionToolStripMenuItem,
-            this.procesosConMenorDuracionToolStripMenuItem});
+            this.procesosConMenorDuracionToolStripMenuItem,
+            this.cincoMenoresTiemposDeDuracionToolStripMenuItem,
+            this.ordenToolStripMenuItem});
             this.informesToolStripMenuItem.Name = "informesToolStripMenuItem";
             this.informesToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
             this.informesToolStripMenuItem.Text = "Informes";
@@ -76,6 +80,7 @@
             this.procesosCreadosPorUsuarioToolStripMenuItem.Name = "procesosCreadosPorUsuarioToolStripMenuItem";
             this.procesosCreadosPorUsuarioToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
             this.procesosCreadosPorUsuarioToolStripMenuItem.Text = "Procesos creados por usuario";
+            this.procesosCreadosPorUsuarioToolStripMenuItem.Click += new System.EventHandler(this.procesosCreadosPorUsuarioToolStripMenuItem_Click);
             // 
             // procesosConMayorDuracionToolStripMenuItem
             // 
@@ -89,6 +94,7 @@
             this.procesosConMenorDuracionToolStripMenuItem.Name = "procesosConMenorDuracionToolStripMenuItem";
             this.procesosConMenorDuracionToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
             this.procesosConMenorDuracionToolStripMenuItem.Text = "Procesos con menor duracion";
+            this.procesosConMenorDuracionToolStripMenuItem.Click += new System.EventHandler(this.procesosConMenorDuracionToolStripMenuItem_Click);
             // 
             // txtPID
             // 
@@ -205,6 +211,20 @@
             this.btnStart.UseVisualStyleBackColor = true;
             this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
+            // cincoMenoresTiemposDeDuracionToolStripMenuItem
+            // 
+            this.cincoMenoresTiemposDeDuracionToolStripMenuItem.Name = "cincoMenoresTiemposDeDuracionToolStripMenuItem";
+            this.cincoMenoresTiemposDeDuracionToolStripMenuItem.Size = new System.Drawing.Size(266, 22);
+            this.cincoMenoresTiemposDeDuracionToolStripMenuItem.Text = "Cinco menores tiempos de duracion";
+            this.cincoMenoresTiemposDeDuracionToolStripMenuItem.Click += new System.EventHandler(this.cincoMenoresTiemposDeDuracionToolStripMenuItem_Click);
+            // 
+            // ordenToolStripMenuItem
+            // 
+            this.ordenToolStripMenuItem.Name = "ordenToolStripMenuItem";
+            this.ordenToolStripMenuItem.Size = new System.Drawing.Size(274, 22);
+            this.ordenToolStripMenuItem.Text = "Orden de terminacion de los procesos";
+            this.ordenToolStripMenuItem.Click += new System.EventHandler(this.ordenToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -252,6 +272,8 @@
         private System.Windows.Forms.ToolStripMenuItem procesosConMayorDuracionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem procesosConMenorDuracionToolStripMenuItem;
         private System.Windows.Forms.Button btnStart;
+        private System.Windows.Forms.ToolStripMenuItem cincoMenoresTiemposDeDuracionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ordenToolStripMenuItem;
     }
 }
 

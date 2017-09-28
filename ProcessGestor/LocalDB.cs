@@ -14,6 +14,7 @@ namespace ProcessGestor
         public static Queue<Process> queue = new Queue<Process>();
         public static Queue<Thread> queueThread = new Queue<Thread>();
         public static int lastTimeArrive;
+        public static int ToQuery;
 
         public static List<Process> getListProcess()
         {
@@ -39,7 +40,7 @@ namespace ProcessGestor
             XElement doc = XElement.Load(@"C:\Users\Jorge\Documents\Visual Studio 2017\Projects\ProcessGestor - Copy\ProcessGestor\Resources\UserProcess.xml");
             var select = from process in doc.Elements("Process") where process.Element("TiempoFinalizacion").Value == process.Element("TiempoFinalizacion").Value orderby process.Element("TiempoFinalizacion").Value ascending select process;
 
-            foreach(var element in select)
+            foreach (var element in select)
             {
                 Console.WriteLine("{0}", element.Element("TiempoFinalizacion").Value);
             }
@@ -53,12 +54,118 @@ namespace ProcessGestor
 
             foreach (var element in select)
             {
-                list.Add(new dataToManage { nombreProcess=element.FirstAttribute.Value, tiempoFinalizacion=int.Parse(element.Element("TiempoFinalizacion").Value) });
+                list.Add(new dataToManage { nombreProcess = element.FirstAttribute.Value, tiempoFinalizacion = int.Parse(element.Element("TiempoFinalizacion").Value) });
             }
 
             return list;
         }
 
+        public static List<dataToManage> listLessDuration()
+        {
+            List<dataToManage> list = new List<dataToManage>();
+            XElement doc = XElement.Load(@"C:\Users\Jorge\Documents\Visual Studio 2017\Projects\ProcessGestor - Copy\ProcessGestor\Resources\UserProcess.xml");
+            var select = (from process in doc.Elements("Process") orderby process.Element("TiempoFinalizacion").Value ascending select process).Take(5);
+
+            foreach (var element in select)
+            {
+                list.Add(new dataToManage { nombreProcess = element.FirstAttribute.Value, tiempoFinalizacion = int.Parse(element.Element("TiempoFinalizacion").Value) });
+            }
+
+            return list;
+        }
+
+        public static List<ProcessData> listFiveLessDuration()
+        {
+            List<ProcessData> list = new List<ProcessData>();
+            XElement doc = XElement.Load(@"C:\Users\Jorge\Documents\Visual Studio 2017\Projects\ProcessGestor - Copy\ProcessGestor\Resources\UserProcess.xml");
+            var select = (from process in doc.Elements("Process") orderby process.Element("TiempoFinalizacion").Value ascending select process).Take(5);
+
+            foreach (var element in select)
+            {
+                list.Add(new ProcessData
+                {
+                    PID = int.Parse(element.Element("PID").Value),
+                    processName = element.FirstAttribute.Value,
+                    quantum = int.Parse(element.Element("Quantum").Value),
+                    timeArrive = int.Parse(element.Element("TiempoLlegada").Value),
+                    timeLeft = int.Parse(element.Element("TiempoFinalizacion").Value)
+                });
+            }
+
+            return list;
+        }
+
+        public static List<ProcessData> listWholeDuration()
+        {
+            List<ProcessData> list = new List<ProcessData>();
+            XElement doc = XElement.Load(@"C:\Users\Jorge\Documents\Visual Studio 2017\Projects\ProcessGestor - Copy\ProcessGestor\Resources\UserProcess.xml");
+            var select = from process in doc.Elements("Process") orderby process.Element("TiempoFinalizacion").Value ascending select process;
+
+            foreach (var element in select)
+            {
+                list.Add(new ProcessData
+                {
+                    PID = int.Parse(element.Element("PID").Value),
+                    processName = element.FirstAttribute.Value,
+                    quantum = int.Parse(element.Element("Quantum").Value),
+                    timeArrive = int.Parse(element.Element("TiempoLlegada").Value),
+                    timeLeft = int.Parse(element.Element("TiempoFinalizacion").Value)
+                });
+            }
+
+            return list;
+        }
+
+        public static List<ProcessData> listEqualDuration()
+        {
+            List<ProcessData> list = new List<ProcessData>();
+            XElement doc = XElement.Load(@"C:\Users\Jorge\Documents\Visual Studio 2017\Projects\ProcessGestor - Copy\ProcessGestor\Resources\UserProcess.xml");
+            var select = from process in doc.Elements("Process") orderby process.Element("TiempoFinalizacion").Value ascending select process;
+
+            foreach (var element in select)
+            {
+                list.Add(new ProcessData
+                {
+                    PID = int.Parse(element.Element("PID").Value),
+                    processName = element.FirstAttribute.Value,
+                    quantum = int.Parse(element.Element("Quantum").Value),
+                    timeArrive = int.Parse(element.Element("TiempoLlegada").Value),
+                    timeLeft = int.Parse(element.Element("TiempoFinalizacion").Value)
+                });
+            }
+
+            return list;
+        }
+        
+        public static List<ProcessData> listWholeUserProcess()
+        {
+            List<ProcessData> list = new List<ProcessData>();
+            XElement doc = XElement.Load(@"C:\Users\Jorge\Documents\Visual Studio 2017\Projects\ProcessGestor - Copy\ProcessGestor\Resources\UserProcess.xml");
+            var select = from process in doc.Elements("Process") select process;
+
+            foreach (var element in select)
+            {
+                list.Add(new ProcessData
+                {
+                    PID = int.Parse(element.Element("PID").Value),
+                    processName = element.FirstAttribute.Value,
+                    quantum = int.Parse(element.Element("Quantum").Value),
+                    timeArrive = int.Parse(element.Element("TiempoLlegada").Value),
+                    timeLeft = int.Parse(element.Element("TiempoFinalizacion").Value)
+                });
+            }
+
+            return list;
+        }
+
+        public class ProcessData
+        {
+            public int PID { get; set; }
+            public string processName { get; set; }
+            public int timeArrive { get; set; }
+            public int quantum { get; set; }
+            public int timeLeft { get; set; }
+        }
 
         public class dataToManage
         {

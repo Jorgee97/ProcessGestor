@@ -64,5 +64,32 @@ namespace ProcessGestor
             Form form = new MayorDuracion();
             form.Show();
         }
+
+        private void procesosConMenorDuracionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form form = new MenorDuracion();
+            form.Show();
+        }
+
+        private void procesosCreadosPorUsuarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LocalDB.ToQuery = 1;
+            Form form = new Listados();
+            form.Show();
+        }
+
+        private void cincoMenoresTiemposDeDuracionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LocalDB.ToQuery = 2;
+            Form form = new Listados();
+            form.Show();
+        }
+
+        private void ordenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LocalDB.ToQuery = 3;
+            Form form = new Listados();
+            form.Show();
+        }
     }
 }

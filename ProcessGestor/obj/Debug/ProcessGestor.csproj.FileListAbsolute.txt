@@ -11,3 +11,5 @@ C:\Users\Jorge\Documents\Visual Studio 2017\Projects\ProcessGestor - Copy\Proces
 C:\Users\Jorge\Documents\Visual Studio 2017\Projects\ProcessGestor - Copy\ProcessGestor\obj\Debug\ProcessGestor.pdb
 C:\Users\Jorge\Documents\Visual Studio 2017\Projects\ProcessGestor - Copy\ProcessGestor\obj\Debug\ProcessGestor.csprojResolveAssemblyReference.cache
 C:\Users\Jorge\Documents\Visual Studio 2017\Projects\ProcessGestor - Copy\ProcessGestor\obj\Debug\ProcessGestor.MayorDuracion.resources
+C:\Users\Jorge\Documents\Visual Studio 2017\Projects\ProcessGestor - Copy\ProcessGestor\obj\Debug\ProcessGestor.MenorDuracion.resources
+C:\Users\Jorge\Documents\Visual Studio 2017\Projects\ProcessGestor - Copy\ProcessGestor\obj\Debug\ProcessGestor.Listados.resources

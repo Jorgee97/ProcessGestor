@@ -1,81 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <UserProcess>
-  <Process name="dangit">
+  <Process name="ggg">
     <PID>1</PID>
     <Quantum>2</Quantum>
     <TiempoLlegada>0</TiempoLlegada>
     <TiempoFinalizacion>400</TiempoFinalizacion>
   </Process>
-  <Process name="dangit2">
-    <PID>2</PID>
-    <Quantum>3</Quantum>
-    <TiempoLlegada>1</TiempoLlegada>
-    <TiempoFinalizacion>600</TiempoFinalizacion>
-  </Process>
-  <Process name="dangit4">
-    <PID>3</PID>
+  <Process name="gggi">
+    <PID>12</PID>
     <Quantum>4</Quantum>
-    <TiempoLlegada>2</TiempoLlegada>
+    <TiempoLlegada>1</TiempoLlegada>
     <TiempoFinalizacion>800</TiempoFinalizacion>
-  </Process>
-  <Process name="das">
-    <PID>5</PID>
-    <Quantum>2</Quantum>
-    <TiempoLlegada>0</TiempoLlegada>
-    <TiempoFinalizacion>400</TiempoFinalizacion>
-  </Process>
-  <Process name="dasa">
-    <PID>6</PID>
-    <Quantum>2</Quantum>
-    <TiempoLlegada>1</TiempoLlegada>
-    <TiempoFinalizacion>400</TiempoFinalizacion>
-  </Process>
-  <Process name="dassad">
-    <PID>1</PID>
-    <Quantum>2</Quantum>
-    <TiempoLlegada>0</TiempoLlegada>
-    <TiempoFinalizacion>400</TiempoFinalizacion>
-  </Process>
-  <Process name="hgfddccf">
-    <PID>4</PID>
-    <Quantum>3</Quantum>
-    <TiempoLlegada>1</TiempoLlegada>
-    <TiempoFinalizacion>600</TiempoFinalizacion>
-  </Process>
-  <Process name="myown">
-    <PID>1</PID>
-    <Quantum>2</Quantum>
-    <TiempoLlegada>0</TiempoLlegada>
-    <TiempoFinalizacion>400</TiempoFinalizacion>
-  </Process>
-  <Process name="myown2">
-    <PID>2</PID>
-    <Quantum>2</Quantum>
-    <TiempoLlegada>1</TiempoLlegada>
-    <TiempoFinalizacion>400</TiempoFinalizacion>
-  </Process>
-  <Process name="qwe">
-    <PID>1</PID>
-    <Quantum>2</Quantum>
-    <TiempoLlegada>0</TiempoLlegada>
-    <TiempoFinalizacion>400</TiempoFinalizacion>
-  </Process>
-  <Process name="qwee">
-    <PID>2</PID>
-    <Quantum>3</Quantum>
-    <TiempoLlegada>1</TiempoLlegada>
-    <TiempoFinalizacion>600</TiempoFinalizacion>
-  </Process>
-  <Process name="qweee">
-    <PID>3</PID>
-    <Quantum>3</Quantum>
-    <TiempoLlegada>0</TiempoLlegada>
-    <TiempoFinalizacion>600</TiempoFinalizacion>
-  </Process>
-  <Process name="dasdasdsadas">
-    <PID>1</PID>
-    <Quantum>2</Quantum>
-    <TiempoLlegada>0</TiempoLlegada>
-    <TiempoFinalizacion>400</TiempoFinalizacion>
   </Process>
 </UserProcess>
