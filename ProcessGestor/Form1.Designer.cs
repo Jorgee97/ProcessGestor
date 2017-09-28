@@ -29,7 +29,10 @@
         private void InitializeComponent()
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.informesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.procesosCreadosPorUsuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.procesosConMayorDuracionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.procesosConMenorDuracionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.txtPID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -43,10 +46,6 @@
             this.txtTLlegada = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.informesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.procesosCreadosPorUsuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.procesosConMayorDuracionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.procesosConMenorDuracionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnStart = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -55,19 +54,41 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
             this.informesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(782, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(774, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // fileToolStripMenuItem
+            // informesToolStripMenuItem
             // 
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(99, 20);
-            this.fileToolStripMenuItem.Text = "Nuevo proceso";
+            this.informesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.procesosCreadosPorUsuarioToolStripMenuItem,
+            this.procesosConMayorDuracionToolStripMenuItem,
+            this.procesosConMenorDuracionToolStripMenuItem});
+            this.informesToolStripMenuItem.Name = "informesToolStripMenuItem";
+            this.informesToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
+            this.informesToolStripMenuItem.Text = "Informes";
+            // 
+            // procesosCreadosPorUsuarioToolStripMenuItem
+            // 
+            this.procesosCreadosPorUsuarioToolStripMenuItem.Name = "procesosCreadosPorUsuarioToolStripMenuItem";
+            this.procesosCreadosPorUsuarioToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
+            this.procesosCreadosPorUsuarioToolStripMenuItem.Text = "Procesos creados por usuario";
+            // 
+            // procesosConMayorDuracionToolStripMenuItem
+            // 
+            this.procesosConMayorDuracionToolStripMenuItem.Name = "procesosConMayorDuracionToolStripMenuItem";
+            this.procesosConMayorDuracionToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
+            this.procesosConMayorDuracionToolStripMenuItem.Text = "Procesos con mayor duracion";
+            this.procesosConMayorDuracionToolStripMenuItem.Click += new System.EventHandler(this.procesosConMayorDuracionToolStripMenuItem_Click);
+            // 
+            // procesosConMenorDuracionToolStripMenuItem
+            // 
+            this.procesosConMenorDuracionToolStripMenuItem.Name = "procesosConMenorDuracionToolStripMenuItem";
+            this.procesosConMenorDuracionToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
+            this.procesosConMenorDuracionToolStripMenuItem.Text = "Procesos con menor duracion";
             // 
             // txtPID
             // 
@@ -95,10 +116,10 @@
             this.TiempoLlegada,
             this.Quantum,
             this.Estado});
-            this.dataGridView1.Location = new System.Drawing.Point(51, 218);
+            this.dataGridView1.Location = new System.Drawing.Point(51, 114);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(645, 121);
+            this.dataGridView1.Size = new System.Drawing.Size(701, 121);
             this.dataGridView1.TabIndex = 3;
             // 
             // PID
@@ -135,7 +156,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(48, 88);
+            this.label2.Location = new System.Drawing.Point(290, 34);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(86, 13);
             this.label2.TabIndex = 4;
@@ -143,14 +164,14 @@
             // 
             // txtNameProcess
             // 
-            this.txtNameProcess.Location = new System.Drawing.Point(51, 104);
+            this.txtNameProcess.Location = new System.Drawing.Point(293, 50);
             this.txtNameProcess.Name = "txtNameProcess";
             this.txtNameProcess.Size = new System.Drawing.Size(211, 20);
             this.txtNameProcess.TabIndex = 1;
             // 
             // txtTLlegada
             // 
-            this.txtTLlegada.Location = new System.Drawing.Point(51, 154);
+            this.txtTLlegada.Location = new System.Drawing.Point(541, 50);
             this.txtTLlegada.Name = "txtTLlegada";
             this.txtTLlegada.Size = new System.Drawing.Size(211, 20);
             this.txtTLlegada.TabIndex = 2;
@@ -158,7 +179,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(48, 138);
+            this.label3.Location = new System.Drawing.Point(538, 34);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(50, 13);
             this.label3.TabIndex = 7;
@@ -166,47 +187,19 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(417, 154);
+            this.btnAdd.Location = new System.Drawing.Point(51, 76);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(279, 23);
+            this.btnAdd.Size = new System.Drawing.Size(701, 23);
             this.btnAdd.TabIndex = 3;
             this.btnAdd.Text = "Añadir proceso";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // informesToolStripMenuItem
-            // 
-            this.informesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.procesosCreadosPorUsuarioToolStripMenuItem,
-            this.procesosConMayorDuracionToolStripMenuItem,
-            this.procesosConMenorDuracionToolStripMenuItem});
-            this.informesToolStripMenuItem.Name = "informesToolStripMenuItem";
-            this.informesToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
-            this.informesToolStripMenuItem.Text = "Informes";
-            // 
-            // procesosCreadosPorUsuarioToolStripMenuItem
-            // 
-            this.procesosCreadosPorUsuarioToolStripMenuItem.Name = "procesosCreadosPorUsuarioToolStripMenuItem";
-            this.procesosCreadosPorUsuarioToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
-            this.procesosCreadosPorUsuarioToolStripMenuItem.Text = "Procesos creados por usuario";
-            // 
-            // procesosConMayorDuracionToolStripMenuItem
-            // 
-            this.procesosConMayorDuracionToolStripMenuItem.Name = "procesosConMayorDuracionToolStripMenuItem";
-            this.procesosConMayorDuracionToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
-            this.procesosConMayorDuracionToolStripMenuItem.Text = "Procesos con mayor duracion";
-            // 
-            // procesosConMenorDuracionToolStripMenuItem
-            // 
-            this.procesosConMenorDuracionToolStripMenuItem.Name = "procesosConMenorDuracionToolStripMenuItem";
-            this.procesosConMenorDuracionToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
-            this.procesosConMenorDuracionToolStripMenuItem.Text = "Procesos con menor duracion";
-            // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(578, 366);
+            this.btnStart.Location = new System.Drawing.Point(625, 241);
             this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(75, 23);
+            this.btnStart.Size = new System.Drawing.Size(118, 44);
             this.btnStart.TabIndex = 8;
             this.btnStart.Text = "Iniciar procesos";
             this.btnStart.UseVisualStyleBackColor = true;
@@ -216,7 +209,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(782, 450);
+            this.ClientSize = new System.Drawing.Size(774, 291);
             this.Controls.Add(this.btnStart);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.label3);
@@ -241,7 +234,6 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.TextBox txtPID;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridView1;

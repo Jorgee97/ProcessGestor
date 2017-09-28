@@ -47,7 +47,7 @@ namespace ProcessGestor
             catch (IOException e)
             {
                 if (e.Source != null)
-                    File.WriteAllText(@"C:\Users\Jorge\Documents\Visual Studio 2017\Projects\ProcessGestor\ProcessGestor\Resources\log.txt", e.ToString());
+                    File.WriteAllText(@"C:\Users\Jorge\Documents\Visual Studio 2017\Projects\ProcessGestor - Copy\ProcessGestor\Resources\log.txt", e.ToString());
                 throw;
             }
         }

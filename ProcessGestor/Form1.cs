@@ -58,5 +58,11 @@ namespace ProcessGestor
         {
             RoundRobin();
         }
+
+        private void procesosConMayorDuracionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form form = new MayorDuracion();
+            form.Show();
+        }
     }
 }
