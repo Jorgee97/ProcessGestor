@@ -1,15 +1,4 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <UserProcess>
-  <Process name="ggg">
-    <PID>1</PID>
-    <Quantum>2</Quantum>
-    <TiempoLlegada>0</TiempoLlegada>
-    <TiempoFinalizacion>400</TiempoFinalizacion>
-  </Process>
-  <Process name="gggi">
-    <PID>12</PID>
-    <Quantum>4</Quantum>
-    <TiempoLlegada>1</TiempoLlegada>
-    <TiempoFinalizacion>800</TiempoFinalizacion>
-  </Process>
+  
 </UserProcess>

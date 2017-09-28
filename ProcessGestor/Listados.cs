@@ -48,6 +48,15 @@ namespace ProcessGestor
                         dataGridView1.Rows.Add(element.PID, element.processName, element.timeArrive, element.timeLeft, element.quantum);
                     }
                     break;
+                case 4:
+                    List<LocalDB.ProcessData> list4 = new List<LocalDB.ProcessData>();
+                    list4 = LocalDB.listEqualDuration();
+
+                    foreach (var element in list4)
+                    {
+                        dataGridView1.Rows.Add(element.PID, element.processName, element.timeArrive, element.timeLeft, element.quantum);
+                    }
+                    break;
                 default:
                     break;
             }

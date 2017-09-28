@@ -35,17 +35,6 @@ namespace ProcessGestor
             doc.Save(@"C:\Users\Jorge\Documents\Visual Studio 2017\Projects\ProcessGestor - Copy\ProcessGestor\Resources\UserProcess.xml");
         }
 
-        public static void InformSameTimeLeft()
-        {
-            XElement doc = XElement.Load(@"C:\Users\Jorge\Documents\Visual Studio 2017\Projects\ProcessGestor - Copy\ProcessGestor\Resources\UserProcess.xml");
-            var select = from process in doc.Elements("Process") where process.Element("TiempoFinalizacion").Value == process.Element("TiempoFinalizacion").Value orderby process.Element("TiempoFinalizacion").Value ascending select process;
-
-            foreach (var element in select)
-            {
-                Console.WriteLine("{0}", element.Element("TiempoFinalizacion").Value);
-            }
-        }
-
         public static List<dataToManage> listGreatDuration()
         {
             List<dataToManage> list = new List<dataToManage>();
@@ -120,18 +109,28 @@ namespace ProcessGestor
         {
             List<ProcessData> list = new List<ProcessData>();
             XElement doc = XElement.Load(@"C:\Users\Jorge\Documents\Visual Studio 2017\Projects\ProcessGestor - Copy\ProcessGestor\Resources\UserProcess.xml");
-            var select = from process in doc.Elements("Process") orderby process.Element("TiempoFinalizacion").Value ascending select process;
-
-            foreach (var element in select)
+            //var select = from process in doc.Elements("Process") orderby process.Element("TiempoFinalizacion").Value ascending select process;
+            var select = from process in doc.Elements("Process") group process by process.Element("TiempoFinalizacion").Value into g select new
+                    {
+                        timeLeft = g.Key,
+                        timeCount = g.Count()
+                    };                
+            
+            foreach (var item in select)
             {
-                list.Add(new ProcessData
+                var query = from process in doc.Elements("Process") where process.Element("TiempoFinalizacion").Value == item.timeLeft && item.timeCount > 1 select process;
+
+                foreach (var element in query)
                 {
-                    PID = int.Parse(element.Element("PID").Value),
-                    processName = element.FirstAttribute.Value,
-                    quantum = int.Parse(element.Element("Quantum").Value),
-                    timeArrive = int.Parse(element.Element("TiempoLlegada").Value),
-                    timeLeft = int.Parse(element.Element("TiempoFinalizacion").Value)
-                });
+                    list.Add(new ProcessData
+                    {
+                        PID = int.Parse(element.Element("PID").Value),
+                        processName = element.FirstAttribute.Value,
+                        quantum = int.Parse(element.Element("Quantum").Value),
+                        timeArrive = int.Parse(element.Element("TiempoLlegada").Value),
+                        timeLeft = int.Parse(element.Element("TiempoFinalizacion").Value)
+                    });
+                }
             }
 
             return list;

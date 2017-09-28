@@ -25,6 +25,9 @@ namespace ProcessGestor
         public void setState(string v) { state = v; }
         public void setTimeLeft(float v) { timeLeft = v; }
         public float getTimeLeft() { return timeLeft; }
+        public int rowIndex;
+        public void setRowIndex(int v) { rowIndex = v; }
+        public int getRowIndex() { return rowIndex; }
 
         public Process (int processID, float quantum, string name, string state)
         {

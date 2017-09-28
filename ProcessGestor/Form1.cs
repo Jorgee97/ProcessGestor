@@ -18,17 +18,24 @@ namespace ProcessGestor
         public Form1()
         {
             InitializeComponent();
-            LocalDB.InformSameTimeLeft();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            Process process = new Process(int.Parse(txtPID.Text), float.Parse(txtTLlegada.Text), txtNameProcess.Text, "Listo");
-            LocalDB.listProcess.Add(process);
+            if (txtPID.Text != "" && txtNameProcess.Text != "" && txtTLlegada.Text != "")
+            {
+                Process process = new Process(int.Parse(txtPID.Text), float.Parse(txtTLlegada.Text), txtNameProcess.Text, "Listo");
+                LocalDB.listProcess.Add(process);
 
-            LocalDB.queue.Enqueue(process);
-            
-            dataGridView1.Rows.Add(process.getProccessID(), process.getProcessName(), process.getTimeArrive(), process.getQuantum(), process.getState());
+                LocalDB.queue.Enqueue(process);
+
+                dataGridView1.Rows.Add(process.getProccessID(), process.getProcessName(), process.getTimeArrive(), process.getQuantum(), process.getState());
+                process.setRowIndex(dataGridView1.Rows.Count - 1);
+            }
+            else
+            {
+                MessageBox.Show("Por favor complete todos los campos para continuar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void RoundRobin()
@@ -45,18 +52,21 @@ namespace ProcessGestor
                     Thread.Sleep(1000);
                     workingProcess.Start();
                     if (workingProcess.ThreadState == ThreadState.Running) {
-                        dataGridView1.Rows[process.getTimeArrive()].Cells[4].Value = process.getState();
+                        dataGridView1.Rows[process.getRowIndex()].Cells[4].Value = process.getState();
                     }
 
                     // Timer for set the value of process state to "Terminado"
-                    System.Threading.Timer timer = new System.Threading.Timer((object state) => { dataGridView1.Rows[process.getTimeArrive()].Cells[4].Value = "Terminado"; }, null, (int)process.getQuantum() * 1000, Timeout.Infinite);
+                    System.Threading.Timer timer = new System.Threading.Timer((object state) => { dataGridView1.Rows[process.getRowIndex()].Cells[4].Value = "Terminado"; }, null, (int)process.getQuantum() * 1000, Timeout.Infinite);
                 }
             }
         }
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-            RoundRobin();
+            if (LocalDB.queue.Count > 0)
+                RoundRobin();
+            else
+                MessageBox.Show("No hay procesos pendientes, por favor añada uno.", "Caution", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         private void procesosConMayorDuracionToolStripMenuItem_Click(object sender, EventArgs e)
@@ -88,6 +98,13 @@ namespace ProcessGestor
         private void ordenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             LocalDB.ToQuery = 3;
+            Form form = new Listados();
+            form.Show();
+        }
+
+        private void igualDuracionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LocalDB.ToQuery = 4;
             Form form = new Listados();
             form.Show();
         }

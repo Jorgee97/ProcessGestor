@@ -33,6 +33,9 @@
             this.procesosCreadosPorUsuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.procesosConMayorDuracionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.procesosConMenorDuracionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cincoMenoresTiemposDeDuracionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ordenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.igualDuracionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.txtPID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -47,8 +50,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnStart = new System.Windows.Forms.Button();
-            this.cincoMenoresTiemposDeDuracionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ordenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -70,7 +71,8 @@
             this.procesosConMayorDuracionToolStripMenuItem,
             this.procesosConMenorDuracionToolStripMenuItem,
             this.cincoMenoresTiemposDeDuracionToolStripMenuItem,
-            this.ordenToolStripMenuItem});
+            this.ordenToolStripMenuItem,
+            this.igualDuracionToolStripMenuItem});
             this.informesToolStripMenuItem.Name = "informesToolStripMenuItem";
             this.informesToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
             this.informesToolStripMenuItem.Text = "Informes";
@@ -78,23 +80,44 @@
             // procesosCreadosPorUsuarioToolStripMenuItem
             // 
             this.procesosCreadosPorUsuarioToolStripMenuItem.Name = "procesosCreadosPorUsuarioToolStripMenuItem";
-            this.procesosCreadosPorUsuarioToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
+            this.procesosCreadosPorUsuarioToolStripMenuItem.Size = new System.Drawing.Size(274, 22);
             this.procesosCreadosPorUsuarioToolStripMenuItem.Text = "Procesos creados por usuario";
             this.procesosCreadosPorUsuarioToolStripMenuItem.Click += new System.EventHandler(this.procesosCreadosPorUsuarioToolStripMenuItem_Click);
             // 
             // procesosConMayorDuracionToolStripMenuItem
             // 
             this.procesosConMayorDuracionToolStripMenuItem.Name = "procesosConMayorDuracionToolStripMenuItem";
-            this.procesosConMayorDuracionToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
+            this.procesosConMayorDuracionToolStripMenuItem.Size = new System.Drawing.Size(274, 22);
             this.procesosConMayorDuracionToolStripMenuItem.Text = "Procesos con mayor duracion";
             this.procesosConMayorDuracionToolStripMenuItem.Click += new System.EventHandler(this.procesosConMayorDuracionToolStripMenuItem_Click);
             // 
             // procesosConMenorDuracionToolStripMenuItem
             // 
             this.procesosConMenorDuracionToolStripMenuItem.Name = "procesosConMenorDuracionToolStripMenuItem";
-            this.procesosConMenorDuracionToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
+            this.procesosConMenorDuracionToolStripMenuItem.Size = new System.Drawing.Size(274, 22);
             this.procesosConMenorDuracionToolStripMenuItem.Text = "Procesos con menor duracion";
             this.procesosConMenorDuracionToolStripMenuItem.Click += new System.EventHandler(this.procesosConMenorDuracionToolStripMenuItem_Click);
+            // 
+            // cincoMenoresTiemposDeDuracionToolStripMenuItem
+            // 
+            this.cincoMenoresTiemposDeDuracionToolStripMenuItem.Name = "cincoMenoresTiemposDeDuracionToolStripMenuItem";
+            this.cincoMenoresTiemposDeDuracionToolStripMenuItem.Size = new System.Drawing.Size(274, 22);
+            this.cincoMenoresTiemposDeDuracionToolStripMenuItem.Text = "Cinco menores tiempos de duracion";
+            this.cincoMenoresTiemposDeDuracionToolStripMenuItem.Click += new System.EventHandler(this.cincoMenoresTiemposDeDuracionToolStripMenuItem_Click);
+            // 
+            // ordenToolStripMenuItem
+            // 
+            this.ordenToolStripMenuItem.Name = "ordenToolStripMenuItem";
+            this.ordenToolStripMenuItem.Size = new System.Drawing.Size(274, 22);
+            this.ordenToolStripMenuItem.Text = "Orden de terminacion de los procesos";
+            this.ordenToolStripMenuItem.Click += new System.EventHandler(this.ordenToolStripMenuItem_Click);
+            // 
+            // igualDuracionToolStripMenuItem
+            // 
+            this.igualDuracionToolStripMenuItem.Name = "igualDuracionToolStripMenuItem";
+            this.igualDuracionToolStripMenuItem.Size = new System.Drawing.Size(274, 22);
+            this.igualDuracionToolStripMenuItem.Text = "Igual duracion";
+            this.igualDuracionToolStripMenuItem.Click += new System.EventHandler(this.igualDuracionToolStripMenuItem_Click);
             // 
             // txtPID
             // 
@@ -114,6 +137,7 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -211,20 +235,6 @@
             this.btnStart.UseVisualStyleBackColor = true;
             this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
-            // cincoMenoresTiemposDeDuracionToolStripMenuItem
-            // 
-            this.cincoMenoresTiemposDeDuracionToolStripMenuItem.Name = "cincoMenoresTiemposDeDuracionToolStripMenuItem";
-            this.cincoMenoresTiemposDeDuracionToolStripMenuItem.Size = new System.Drawing.Size(266, 22);
-            this.cincoMenoresTiemposDeDuracionToolStripMenuItem.Text = "Cinco menores tiempos de duracion";
-            this.cincoMenoresTiemposDeDuracionToolStripMenuItem.Click += new System.EventHandler(this.cincoMenoresTiemposDeDuracionToolStripMenuItem_Click);
-            // 
-            // ordenToolStripMenuItem
-            // 
-            this.ordenToolStripMenuItem.Name = "ordenToolStripMenuItem";
-            this.ordenToolStripMenuItem.Size = new System.Drawing.Size(274, 22);
-            this.ordenToolStripMenuItem.Text = "Orden de terminacion de los procesos";
-            this.ordenToolStripMenuItem.Click += new System.EventHandler(this.ordenToolStripMenuItem_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -274,6 +284,7 @@
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.ToolStripMenuItem cincoMenoresTiemposDeDuracionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ordenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem igualDuracionToolStripMenuItem;
     }
 }
 
