@@ -18,8 +18,6 @@ namespace ProcessGestor
             InitializeComponent();
         }
 
-
-
         private void MayorDuracion_Load(object sender, EventArgs e)
         {
             List<LocalDB.dataToManage> list = new List<LocalDB.dataToManage>();

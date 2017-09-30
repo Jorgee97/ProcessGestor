@@ -15,6 +15,7 @@ namespace ProcessGestor
         public static Queue<Thread> queueThread = new Queue<Thread>();
         public static int lastTimeArrive;
         public static int ToQuery;
+        public static int autoNum = 0;
 
         public static List<Process> getListProcess()
         {
@@ -23,7 +24,7 @@ namespace ProcessGestor
 
         public static void SaveProcessXML(Process process)
         {
-            Console.WriteLine("Caling process");
+            Console.WriteLine("Calling process");
             XDocument doc = XDocument.Load(@"C:\Users\Jorge\Documents\Visual Studio 2017\Projects\ProcessGestor - Copy\ProcessGestor\Resources\UserProcess.xml");
             XElement root = new XElement("Process");
             root.Add(new XAttribute("name", process.getProcessName()));

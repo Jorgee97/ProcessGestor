@@ -31,6 +31,9 @@ namespace ProcessGestor
 
                 dataGridView1.Rows.Add(process.getProccessID(), process.getProcessName(), process.getTimeArrive(), process.getQuantum(), process.getState());
                 process.setRowIndex(dataGridView1.Rows.Count - 1);
+
+                txtNameProcess.Text = "";
+                txtTLlegada.Text = "";
             }
             else
             {
@@ -38,23 +41,33 @@ namespace ProcessGestor
             }
         }
 
+        private void PeekChangeState()
+        {
+            if (LocalDB.queue.Count > 0)
+            {
+                Process process = LocalDB.queue.Peek();
+
+                process.setState("Ejecutando");
+                Console.WriteLine("Peeking {0}", process.getProcessName());
+            }
+            Console.WriteLine("Exiting peek...");
+        }
+
         private void RoundRobin()
         {
             /* Having in mind that round robin's uses FIFO standard i'm gonna follow that on my next code */
             while (LocalDB.queue.Count != 0)
             {
+                PeekChangeState();
                 Process process = LocalDB.queue.Dequeue();
                 Thread workingProcess = LocalDB.queueThread.Dequeue();
-
+                Console.WriteLine("{0}", process.getState());
                 if (workingProcess.Name == process.getProcessName() && process.isDone() == false)
                 {
-                    process.setState("Ejecutando");
                     Thread.Sleep(1000);
+                    dataGridView1.Rows[process.getRowIndex()].Cells[4].Value = process.getState();
                     workingProcess.Start();
-                    if (workingProcess.ThreadState == ThreadState.Running) {
-                        dataGridView1.Rows[process.getRowIndex()].Cells[4].Value = process.getState();
-                    }
-
+ 
                     // Timer for set the value of process state to "Terminado"
                     System.Threading.Timer timer = new System.Threading.Timer((object state) => { dataGridView1.Rows[process.getRowIndex()].Cells[4].Value = "Terminado"; }, null, (int)process.getQuantum() * 1000, Timeout.Infinite);
                 }
@@ -107,6 +120,12 @@ namespace ProcessGestor
             LocalDB.ToQuery = 4;
             Form form = new Listados();
             form.Show();
+        }
+
+        private void txtPID_Enter(object sender, EventArgs e)
+        {
+            Random random = new Random();
+            txtPID.Text = random.Next(1, 20).ToString();
         }
     }
 }

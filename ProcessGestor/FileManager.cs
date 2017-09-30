@@ -17,8 +17,10 @@ namespace ProcessGestor
             {
                 using (FileStream fsSource = new FileStream(@"C:\Users\Jorge\Documents\Lorem.txt", FileMode.Open, FileAccess.Read))
                 {
-                    byte[] bytes = new byte[(int)time * 1000];
-                    int numBytesToRead = (int)time * 1000;
+                    //byte[] bytes = new byte[(int)time * 1000];
+                    //int numBytesToRead = (int)time * 1000;
+                    byte[] bytes = new byte[(int)time * 5];
+                    int numBytesToRead = (int)time * 5;
                     int numBytesRead = 0;
 
                     while (numBytesToRead > 0)
@@ -33,7 +35,8 @@ namespace ProcessGestor
                     }
 
                     numBytesToRead = bytes.Length;
-                    process.setTimeLeft(numBytesToRead / 5);
+                    //process.setTimeLeft(numBytesToRead / 5);
+                    process.setTimeLeft(time * bytes.Length);
 
                     using (FileStream fsNew = new FileStream(namefile + ".txt", FileMode.Create, FileAccess.Write))
                     {

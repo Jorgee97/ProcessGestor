@@ -50,7 +50,6 @@ namespace ProcessGestor
             Console.WriteLine("ID Proceso {0} Con nombre {1} Tiempo de llegada {2} Copiando informacion.", getProccessID(), getProcessName(), getTimeArrive());
             fileManager.CopyToFile(getProcessName(), quantum, this);
             done = true;
-            thread.Abort();
         }
 
         public int getProccessID()

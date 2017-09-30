@@ -125,6 +125,7 @@
             this.txtPID.Name = "txtPID";
             this.txtPID.Size = new System.Drawing.Size(211, 20);
             this.txtPID.TabIndex = 0;
+            this.txtPID.Enter += new System.EventHandler(this.txtPID_Enter);
             // 
             // label1
             // 
@@ -229,7 +230,7 @@
             // 
             this.btnStart.Location = new System.Drawing.Point(625, 241);
             this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(118, 44);
+            this.btnStart.Size = new System.Drawing.Size(127, 44);
             this.btnStart.TabIndex = 8;
             this.btnStart.Text = "Iniciar procesos";
             this.btnStart.UseVisualStyleBackColor = true;
