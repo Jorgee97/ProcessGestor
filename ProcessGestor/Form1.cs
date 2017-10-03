@@ -18,6 +18,7 @@ namespace ProcessGestor
         public Form1()
         {
             InitializeComponent();
+            Console.WriteLine(LocalDB.queue.Count);
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -32,8 +33,11 @@ namespace ProcessGestor
                 dataGridView1.Rows.Add(process.getProccessID(), process.getProcessName(), process.getTimeArrive(), process.getQuantum(), process.getState());
                 process.setRowIndex(dataGridView1.Rows.Count - 1);
 
+                LocalDB.SaveProcessXML(process);
+
                 txtNameProcess.Text = "";
                 txtTLlegada.Text = "";
+                txtPID.Text = "";
             }
             else
             {
@@ -49,6 +53,14 @@ namespace ProcessGestor
 
                 process.setState("Ejecutando");
                 Console.WriteLine("Peeking {0}", process.getProcessName());
+
+                for (int i = 1; i < LocalDB.queue.Count; i++)
+                {
+                    process = LocalDB.queue.ElementAt(i);
+                    LocalDB.queue.ElementAt(i).setState("Esperando");
+                    dataGridView1.Rows[process.getRowIndex()].Cells[4].Value = process.getState();
+                    dataGridView1.Update();
+                }
             }
             Console.WriteLine("Exiting peek...");
         }
@@ -61,15 +73,18 @@ namespace ProcessGestor
                 PeekChangeState();
                 Process process = LocalDB.queue.Dequeue();
                 Thread workingProcess = LocalDB.queueThread.Dequeue();
-                Console.WriteLine("{0}", process.getState());
+
                 if (workingProcess.Name == process.getProcessName() && process.isDone() == false)
                 {
-                    Thread.Sleep(1000);
+                    //Thread.Sleep(1000);
                     dataGridView1.Rows[process.getRowIndex()].Cells[4].Value = process.getState();
+                    dataGridView1.Update();
                     workingProcess.Start();
- 
+
                     // Timer for set the value of process state to "Terminado"
-                    System.Threading.Timer timer = new System.Threading.Timer((object state) => { dataGridView1.Rows[process.getRowIndex()].Cells[4].Value = "Terminado"; }, null, (int)process.getQuantum() * 1000, Timeout.Infinite);
+                    Thread.Sleep((int)process.getQuantum() * 1000);
+                    dataGridView1.Rows[process.getRowIndex()].Cells[4].Value = "Terminado";
+                    //System.Threading.Timer timer = new System.Threading.Timer((object state) => { dataGridView1.Rows[process.getRowIndex()].Cells[4].Value = "Terminado"; }, null, (int)process.getQuantum() * 1000, Timeout.Infinite);
                 }
             }
         }
@@ -122,10 +137,10 @@ namespace ProcessGestor
             form.Show();
         }
 
-        private void txtPID_Enter(object sender, EventArgs e)
+
+        private void txtNameProcess_Enter(object sender, EventArgs e)
         {
-            Random random = new Random();
-            txtPID.Text = random.Next(1, 20).ToString();
+            txtPID.Text = LocalDB.NewPid().ToString();
         }
     }
 }

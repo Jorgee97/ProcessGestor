@@ -121,11 +121,11 @@
             // 
             // txtPID
             // 
+            this.txtPID.Enabled = false;
             this.txtPID.Location = new System.Drawing.Point(51, 50);
             this.txtPID.Name = "txtPID";
             this.txtPID.Size = new System.Drawing.Size(211, 20);
             this.txtPID.TabIndex = 0;
-            this.txtPID.Enter += new System.EventHandler(this.txtPID_Enter);
             // 
             // label1
             // 
@@ -199,6 +199,7 @@
             this.txtNameProcess.Name = "txtNameProcess";
             this.txtNameProcess.Size = new System.Drawing.Size(211, 20);
             this.txtNameProcess.TabIndex = 1;
+            this.txtNameProcess.Enter += new System.EventHandler(this.txtNameProcess_Enter);
             // 
             // txtTLlegada
             // 

@@ -15,8 +15,7 @@ namespace ProcessGestor
         public static Queue<Thread> queueThread = new Queue<Thread>();
         public static int lastTimeArrive;
         public static int ToQuery;
-        public static int autoNum = 0;
-
+        public static string SourceXML = @"C:\Users\Jorge\Documents\Visual Studio 2017\Projects\ProcessGestor - Copy\ProcessGestor\Resources\UserProcess.xml";
         public static List<Process> getListProcess()
         {
             return listProcess;
@@ -25,7 +24,7 @@ namespace ProcessGestor
         public static void SaveProcessXML(Process process)
         {
             Console.WriteLine("Calling process");
-            XDocument doc = XDocument.Load(@"C:\Users\Jorge\Documents\Visual Studio 2017\Projects\ProcessGestor - Copy\ProcessGestor\Resources\UserProcess.xml");
+            XDocument doc = XDocument.Load(SourceXML);
             XElement root = new XElement("Process");
             root.Add(new XAttribute("name", process.getProcessName()));
             root.Add(new XElement("PID", process.getProccessID()),
@@ -33,13 +32,35 @@ namespace ProcessGestor
                     new XElement("TiempoLlegada", process.getTimeArrive()),
                     new XElement("TiempoFinalizacion", process.getTimeLeft()));
             doc.Element("UserProcess").Add(root);
-            doc.Save(@"C:\Users\Jorge\Documents\Visual Studio 2017\Projects\ProcessGestor - Copy\ProcessGestor\Resources\UserProcess.xml");
+            doc.Save(SourceXML);
+        }
+
+        public static void UpdateProcessXML(Process _process)
+        {
+            XElement doc = XElement.Load(SourceXML);
+            var select = from process in doc.Elements("Process") where process.Element("PID").Value == _process.getProccessID().ToString() select process;
+
+            foreach (var item in select)
+            {
+                item.SetElementValue("TiempoFinalizacion", _process.getTimeLeft());
+            }
+
+            doc.Save(SourceXML);
+        }
+
+        public static int NewPid()
+        {
+            XDocument doc = XDocument.Load(SourceXML);
+            int select = doc.Root.Elements("Process").Count();
+
+            if (select == 0) return select + 1;
+            else return select + 1;
         }
 
         public static List<dataToManage> listGreatDuration()
         {
             List<dataToManage> list = new List<dataToManage>();
-            XElement doc = XElement.Load(@"C:\Users\Jorge\Documents\Visual Studio 2017\Projects\ProcessGestor - Copy\ProcessGestor\Resources\UserProcess.xml");
+            XElement doc = XElement.Load(SourceXML);
             var select = (from process in doc.Elements("Process") orderby process.Element("TiempoFinalizacion").Value descending select process).Take(5);
 
             foreach (var element in select)
@@ -53,7 +74,7 @@ namespace ProcessGestor
         public static List<dataToManage> listLessDuration()
         {
             List<dataToManage> list = new List<dataToManage>();
-            XElement doc = XElement.Load(@"C:\Users\Jorge\Documents\Visual Studio 2017\Projects\ProcessGestor - Copy\ProcessGestor\Resources\UserProcess.xml");
+            XElement doc = XElement.Load(SourceXML);
             var select = (from process in doc.Elements("Process") orderby process.Element("TiempoFinalizacion").Value ascending select process).Take(5);
 
             foreach (var element in select)
@@ -67,7 +88,7 @@ namespace ProcessGestor
         public static List<ProcessData> listFiveLessDuration()
         {
             List<ProcessData> list = new List<ProcessData>();
-            XElement doc = XElement.Load(@"C:\Users\Jorge\Documents\Visual Studio 2017\Projects\ProcessGestor - Copy\ProcessGestor\Resources\UserProcess.xml");
+            XElement doc = XElement.Load(SourceXML);
             var select = (from process in doc.Elements("Process") orderby process.Element("TiempoFinalizacion").Value ascending select process).Take(5);
 
             foreach (var element in select)
@@ -88,7 +109,7 @@ namespace ProcessGestor
         public static List<ProcessData> listWholeDuration()
         {
             List<ProcessData> list = new List<ProcessData>();
-            XElement doc = XElement.Load(@"C:\Users\Jorge\Documents\Visual Studio 2017\Projects\ProcessGestor - Copy\ProcessGestor\Resources\UserProcess.xml");
+            XElement doc = XElement.Load(SourceXML);
             var select = from process in doc.Elements("Process") orderby process.Element("TiempoFinalizacion").Value ascending select process;
 
             foreach (var element in select)
@@ -109,7 +130,7 @@ namespace ProcessGestor
         public static List<ProcessData> listEqualDuration()
         {
             List<ProcessData> list = new List<ProcessData>();
-            XElement doc = XElement.Load(@"C:\Users\Jorge\Documents\Visual Studio 2017\Projects\ProcessGestor - Copy\ProcessGestor\Resources\UserProcess.xml");
+            XElement doc = XElement.Load(SourceXML);
             //var select = from process in doc.Elements("Process") orderby process.Element("TiempoFinalizacion").Value ascending select process;
             var select = from process in doc.Elements("Process") group process by process.Element("TiempoFinalizacion").Value into g select new
                     {
@@ -140,7 +161,7 @@ namespace ProcessGestor
         public static List<ProcessData> listWholeUserProcess()
         {
             List<ProcessData> list = new List<ProcessData>();
-            XElement doc = XElement.Load(@"C:\Users\Jorge\Documents\Visual Studio 2017\Projects\ProcessGestor - Copy\ProcessGestor\Resources\UserProcess.xml");
+            XElement doc = XElement.Load(SourceXML);
             var select = from process in doc.Elements("Process") select process;
 
             foreach (var element in select)

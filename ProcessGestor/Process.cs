@@ -35,6 +35,7 @@ namespace ProcessGestor
             this.timeQuantum = quantum;
             this.processName = name;
             this.state = state;
+            this.timeLeft = 0;
 
             thread = new Thread(() => processCopyToFile(timeQuantum))
             {
