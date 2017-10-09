@@ -15,7 +15,8 @@ namespace ProcessGestor
         public static Queue<Thread> queueThread = new Queue<Thread>();
         public static int lastTimeArrive;
         public static int ToQuery;
-        public static string SourceXML = @"C:\Users\Jorge\Documents\Visual Studio 2017\Projects\ProcessGestor - Copy\ProcessGestor\Resources\UserProcess.xml";
+        public static string SourceXML = @"C:\Users\Jorge\Desktop\ProcessGestor-master\ProcessGestor\Resources\UserProcess.xml";
+
         public static List<Process> getListProcess()
         {
             return listProcess;
@@ -159,6 +160,27 @@ namespace ProcessGestor
         }
         
         public static List<ProcessData> listWholeUserProcess()
+        {
+            List<ProcessData> list = new List<ProcessData>();
+            XElement doc = XElement.Load(SourceXML);
+            var select = from process in doc.Elements("Process") select process;
+
+            foreach (var element in select)
+            {
+                list.Add(new ProcessData
+                {
+                    PID = int.Parse(element.Element("PID").Value),
+                    processName = element.FirstAttribute.Value,
+                    quantum = int.Parse(element.Element("Quantum").Value),
+                    timeArrive = int.Parse(element.Element("TiempoLlegada").Value),
+                    timeLeft = int.Parse(element.Element("TiempoFinalizacion").Value)
+                });
+            }
+
+            return list;
+        }
+
+        public static List<ProcessData> listLoadXml()
         {
             List<ProcessData> list = new List<ProcessData>();
             XElement doc = XElement.Load(SourceXML);

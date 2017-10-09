@@ -18,7 +18,6 @@ namespace ProcessGestor
         public Form1()
         {
             InitializeComponent();
-            Console.WriteLine(LocalDB.queue.Count);
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -30,8 +29,8 @@ namespace ProcessGestor
 
                 LocalDB.queue.Enqueue(process);
 
-                dataGridView1.Rows.Add(process.getProccessID(), process.getProcessName(), process.getTimeArrive(), process.getQuantum(), process.getState());
-                process.setRowIndex(dataGridView1.Rows.Count - 1);
+                ltReady.Items.Add("PID: " + process.getProccessID() + " - Nombre: " + process.getProcessName() + " - Quantum: " + process.getQuantum());
+                process.setRowIndex(ltReady.Items.Count - 1);
 
                 LocalDB.SaveProcessXML(process);
 
@@ -47,6 +46,8 @@ namespace ProcessGestor
 
         private void PeekChangeState()
         {
+            ltWait.Items.Clear();
+            ltWait.Update();
             if (LocalDB.queue.Count > 0)
             {
                 Process process = LocalDB.queue.Peek();
@@ -57,9 +58,10 @@ namespace ProcessGestor
                 for (int i = 1; i < LocalDB.queue.Count; i++)
                 {
                     process = LocalDB.queue.ElementAt(i);
-                    LocalDB.queue.ElementAt(i).setState("Esperando");
-                    dataGridView1.Rows[process.getRowIndex()].Cells[4].Value = process.getState();
-                    dataGridView1.Update();
+
+                    ltWait.Items.Add("PID: " + process.getProccessID() + " - Nombre: " + process.getProcessName() + " - Quantum: " + process.getQuantum());
+                    ltWait.Update();
+                    ltReady.Items.Clear();
                 }
             }
             Console.WriteLine("Exiting peek...");
@@ -76,15 +78,16 @@ namespace ProcessGestor
 
                 if (workingProcess.Name == process.getProcessName() && process.isDone() == false)
                 {
-                    //Thread.Sleep(1000);
-                    dataGridView1.Rows[process.getRowIndex()].Cells[4].Value = process.getState();
-                    dataGridView1.Update();
+                    ltRunning.Items.Add("PID: " + process.getProccessID() + " - Nombre: " + process.getProcessName() + " - Quantum: " + process.getQuantum());
+                    ltRunning.Update();
+
                     workingProcess.Start();
 
                     // Timer for set the value of process state to "Terminado"
-                    Thread.Sleep((int)process.getQuantum() * 1000);
-                    dataGridView1.Rows[process.getRowIndex()].Cells[4].Value = "Terminado";
-                    //System.Threading.Timer timer = new System.Threading.Timer((object state) => { dataGridView1.Rows[process.getRowIndex()].Cells[4].Value = "Terminado"; }, null, (int)process.getQuantum() * 1000, Timeout.Infinite);
+                    Thread.Sleep((int)process.getQuantum() * 1000); // Simulando quantum
+                    ltRunning.Items.Clear();
+                    ltEnd.Items.Add("PID: " + process.getProccessID() + " - Nombre: " + process.getProcessName() + " - Quantum: " + process.getQuantum());
+                    ltEnd.Update();
                 }
             }
         }
@@ -141,6 +144,29 @@ namespace ProcessGestor
         private void txtNameProcess_Enter(object sender, EventArgs e)
         {
             txtPID.Text = LocalDB.NewPid().ToString();
+        }
+
+        private void loadXML_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                List<LocalDB.ProcessData> list5 = new List<LocalDB.ProcessData>();
+                list5 = LocalDB.listLoadXml();
+
+                foreach (var element in list5)
+                {
+                    Process process = new Process(element.PID, element.quantum, element.processName, "Listo");
+                    LocalDB.listProcess.Add(process);
+
+                    LocalDB.queue.Enqueue(process);
+                    ltReady.Items.Add("PID: " + process.getProccessID() + " - Nombre: " + process.getProcessName() + " - Quantum: " + process.getQuantum());
+                    process.setRowIndex(ltReady.Items.Count - 1);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error" + ex);
+            }
         }
     }
 }

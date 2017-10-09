@@ -38,20 +38,22 @@
             this.igualDuracionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.txtPID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.PID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TiempoLlegada = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quantum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.txtNameProcess = new System.Windows.Forms.TextBox();
             this.txtTLlegada = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnStart = new System.Windows.Forms.Button();
+            this.loadXML = new System.Windows.Forms.Button();
+            this.ltReady = new System.Windows.Forms.ListBox();
+            this.ltWait = new System.Windows.Forms.ListBox();
+            this.ltRunning = new System.Windows.Forms.ListBox();
+            this.ltEnd = new System.Windows.Forms.ListBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -60,7 +62,7 @@
             this.informesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(774, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(790, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -136,54 +138,6 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "PID";
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.PID,
-            this.Nombre,
-            this.TiempoLlegada,
-            this.Quantum,
-            this.Estado});
-            this.dataGridView1.Location = new System.Drawing.Point(51, 114);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(701, 121);
-            this.dataGridView1.TabIndex = 3;
-            // 
-            // PID
-            // 
-            this.PID.HeaderText = "PID";
-            this.PID.Name = "PID";
-            this.PID.ReadOnly = true;
-            // 
-            // Nombre
-            // 
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.Name = "Nombre";
-            this.Nombre.ReadOnly = true;
-            this.Nombre.Width = 200;
-            // 
-            // TiempoLlegada
-            // 
-            this.TiempoLlegada.HeaderText = "Tiempo Llegada";
-            this.TiempoLlegada.Name = "TiempoLlegada";
-            this.TiempoLlegada.ReadOnly = true;
-            // 
-            // Quantum
-            // 
-            this.Quantum.HeaderText = "Quantum";
-            this.Quantum.Name = "Quantum";
-            this.Quantum.ReadOnly = true;
-            // 
-            // Estado
-            // 
-            this.Estado.HeaderText = "Estado";
-            this.Estado.Name = "Estado";
-            this.Estado.ReadOnly = true;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -229,26 +183,116 @@
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(625, 241);
+            this.btnStart.Location = new System.Drawing.Point(22, 256);
             this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(127, 44);
+            this.btnStart.Size = new System.Drawing.Size(749, 35);
             this.btnStart.TabIndex = 8;
             this.btnStart.Text = "Iniciar procesos";
             this.btnStart.UseVisualStyleBackColor = true;
             this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
+            // loadXML
+            // 
+            this.loadXML.Location = new System.Drawing.Point(541, 0);
+            this.loadXML.Name = "loadXML";
+            this.loadXML.Size = new System.Drawing.Size(75, 23);
+            this.loadXML.TabIndex = 9;
+            this.loadXML.Text = "Cargar XML";
+            this.loadXML.UseVisualStyleBackColor = true;
+            this.loadXML.Click += new System.EventHandler(this.loadXML_Click);
+            // 
+            // ltReady
+            // 
+            this.ltReady.FormattingEnabled = true;
+            this.ltReady.HorizontalScrollbar = true;
+            this.ltReady.Location = new System.Drawing.Point(22, 144);
+            this.ltReady.Name = "ltReady";
+            this.ltReady.Size = new System.Drawing.Size(171, 95);
+            this.ltReady.TabIndex = 10;
+            // 
+            // ltWait
+            // 
+            this.ltWait.FormattingEnabled = true;
+            this.ltWait.HorizontalScrollbar = true;
+            this.ltWait.Location = new System.Drawing.Point(210, 144);
+            this.ltWait.Name = "ltWait";
+            this.ltWait.Size = new System.Drawing.Size(171, 95);
+            this.ltWait.TabIndex = 11;
+            // 
+            // ltRunning
+            // 
+            this.ltRunning.FormattingEnabled = true;
+            this.ltRunning.HorizontalScrollbar = true;
+            this.ltRunning.Location = new System.Drawing.Point(405, 144);
+            this.ltRunning.Name = "ltRunning";
+            this.ltRunning.Size = new System.Drawing.Size(170, 95);
+            this.ltRunning.TabIndex = 12;
+            // 
+            // ltEnd
+            // 
+            this.ltEnd.FormattingEnabled = true;
+            this.ltEnd.HorizontalScrollbar = true;
+            this.ltEnd.Location = new System.Drawing.Point(596, 144);
+            this.ltEnd.Name = "ltEnd";
+            this.ltEnd.Size = new System.Drawing.Size(175, 95);
+            this.ltEnd.TabIndex = 13;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(23, 126);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(34, 13);
+            this.label4.TabIndex = 14;
+            this.label4.Text = "Listos";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(212, 126);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(40, 13);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "Espera";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(409, 126);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(61, 13);
+            this.label6.TabIndex = 16;
+            this.label6.Text = "Ejecutando";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(597, 126);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(62, 13);
+            this.label7.TabIndex = 17;
+            this.label7.Text = "Terminados";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(774, 291);
+            this.ClientSize = new System.Drawing.Size(790, 312);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.ltEnd);
+            this.Controls.Add(this.ltRunning);
+            this.Controls.Add(this.ltWait);
+            this.Controls.Add(this.ltReady);
+            this.Controls.Add(this.loadXML);
             this.Controls.Add(this.btnStart);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtTLlegada);
             this.Controls.Add(this.txtNameProcess);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtPID);
             this.Controls.Add(this.menuStrip1);
@@ -257,7 +301,6 @@
             this.Text = "Form1";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -268,12 +311,6 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.TextBox txtPID;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TiempoLlegada;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Quantum;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Estado;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtNameProcess;
         private System.Windows.Forms.TextBox txtTLlegada;
@@ -287,6 +324,15 @@
         private System.Windows.Forms.ToolStripMenuItem cincoMenoresTiemposDeDuracionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ordenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem igualDuracionToolStripMenuItem;
+        private System.Windows.Forms.Button loadXML;
+        private System.Windows.Forms.ListBox ltReady;
+        private System.Windows.Forms.ListBox ltWait;
+        private System.Windows.Forms.ListBox ltRunning;
+        private System.Windows.Forms.ListBox ltEnd;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
     }
 }
 

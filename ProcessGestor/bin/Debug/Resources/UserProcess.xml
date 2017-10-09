@@ -1,270 +1,33 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <UserProcess>
-  <SourceFile>
-    <file ruta=""></file>
-  </SourceFile>
-  <Process name="process">
+  <Process name="Example1">
     <PID>1</PID>
     <Quantum>2</Quantum>
     <TiempoLlegada>0</TiempoLlegada>
-    <TiempoFinalizacion>0</TiempoFinalizacion>
+    <TiempoFinalizacion>20</TiempoFinalizacion>
   </Process>
-  <Process name="process2">
+  <Process name="Example2">
     <PID>2</PID>
-    <Quantum>3</Quantum>
-    <TiempoLlegada>0</TiempoLlegada>
-    <TiempoFinalizacion>0</TiempoFinalizacion>
+    <Quantum>4</Quantum>
+    <TiempoLlegada>1</TiempoLlegada>
+    <TiempoFinalizacion>80</TiempoFinalizacion>
   </Process>
-  <Process name="process3">
+  <Process name="Example3">
     <PID>3</PID>
-    <Quantum>2</Quantum>
-    <TiempoLlegada>1</TiempoLlegada>
-    <TiempoFinalizacion>0</TiempoFinalizacion>
+    <Quantum>5</Quantum>
+    <TiempoLlegada>2</TiempoLlegada>
+    <TiempoFinalizacion>125</TiempoFinalizacion>
   </Process>
-  <Process name="Prueba">
+  <Process name="Example4">
     <PID>4</PID>
-    <Quantum>5</Quantum>
-    <TiempoLlegada>0</TiempoLlegada>
-    <TiempoFinalizacion>0</TiempoFinalizacion>
-  </Process>
-  <Process name="name">
-    <PID>5</PID>
-    <Quantum>2</Quantum>
-    <TiempoLlegada>0</TiempoLlegada>
-    <TiempoFinalizacion>0</TiempoFinalizacion>
-  </Process>
-  <Process name="name2">
-    <PID>6</PID>
-    <Quantum>3</Quantum>
-    <TiempoLlegada>0</TiempoLlegada>
-    <TiempoFinalizacion>0</TiempoFinalizacion>
-  </Process>
-  <Process name="2">
-    <PID>7</PID>
-    <Quantum>3</Quantum>
-    <TiempoLlegada>0</TiempoLlegada>
-    <TiempoFinalizacion>0</TiempoFinalizacion>
-  </Process>
-  <Process name="232">
-    <PID>8</PID>
-    <Quantum>2</Quantum>
-    <TiempoLlegada>0</TiempoLlegada>
-    <TiempoFinalizacion>0</TiempoFinalizacion>
-  </Process>
-  <Process name="re">
-    <PID>9</PID>
-    <Quantum>2</Quantum>
-    <TiempoLlegada>0</TiempoLlegada>
-    <TiempoFinalizacion>0</TiempoFinalizacion>
-  </Process>
-  <Process name="ja">
-    <PID>10</PID>
-    <Quantum>2</Quantum>
-    <TiempoLlegada>0</TiempoLlegada>
-    <TiempoFinalizacion>0</TiempoFinalizacion>
-  </Process>
-  <Process name="Hey">
-    <PID>11</PID>
-    <Quantum>3</Quantum>
-    <TiempoLlegada>0</TiempoLlegada>
-    <TiempoFinalizacion>0</TiempoFinalizacion>
-  </Process>
-  <Process name="Hey2">
-    <PID>12</PID>
-    <Quantum>2</Quantum>
-    <TiempoLlegada>0</TiempoLlegada>
-    <TiempoFinalizacion>20</TiempoFinalizacion>
-  </Process>
-  <Process name="Test">
-    <PID>13</PID>
-    <Quantum>2</Quantum>
-    <TiempoLlegada>0</TiempoLlegada>
-    <TiempoFinalizacion>20</TiempoFinalizacion>
-  </Process>
-  <Process name="Test2">
-    <PID>14</PID>
-    <Quantum>4</Quantum>
-    <TiempoLlegada>1</TiempoLlegada>
-    <TiempoFinalizacion>80</TiempoFinalizacion>
-  </Process>
-  <Process name="Test3">
-    <PID>15</PID>
-    <Quantum>5</Quantum>
-    <TiempoLlegada>2</TiempoLlegada>
-    <TiempoFinalizacion>125</TiempoFinalizacion>
-  </Process>
-  <Process name="tt">
-    <PID>16</PID>
-    <Quantum>2</Quantum>
-    <TiempoLlegada>0</TiempoLlegada>
-    <TiempoFinalizacion>20</TiempoFinalizacion>
-  </Process>
-  <Process name="4">
-    <PID>17</PID>
-    <Quantum>3</Quantum>
-    <TiempoLlegada>1</TiempoLlegada>
-    <TiempoFinalizacion>45</TiempoFinalizacion>
-  </Process>
-  <Process name="hh">
-    <PID>18</PID>
-    <Quantum>2</Quantum>
-    <TiempoLlegada>0</TiempoLlegada>
-    <TiempoFinalizacion>20</TiempoFinalizacion>
-  </Process>
-  <Process name="lkjd">
-    <PID>19</PID>
-    <Quantum>3</Quantum>
-    <TiempoLlegada>1</TiempoLlegada>
-    <TiempoFinalizacion>45</TiempoFinalizacion>
-  </Process>
-  <Process name="Bueno ">
-    <PID>20</PID>
-    <Quantum>2</Quantum>
-    <TiempoLlegada>0</TiempoLlegada>
-    <TiempoFinalizacion>20</TiempoFinalizacion>
-  </Process>
-  <Process name="Pues">
-    <PID>21</PID>
-    <Quantum>3</Quantum>
-    <TiempoLlegada>1</TiempoLlegada>
-    <TiempoFinalizacion>45</TiempoFinalizacion>
-  </Process>
-  <Process name="Casi">
-    <PID>22</PID>
-    <Quantum>4</Quantum>
-    <TiempoLlegada>2</TiempoLlegada>
-    <TiempoFinalizacion>0</TiempoFinalizacion>
-  </Process>
-  <Process name="VERDAD">
-    <PID>23</PID>
-    <Quantum>3</Quantum>
-    <TiempoLlegada>0</TiempoLlegada>
-    <TiempoFinalizacion>45</TiempoFinalizacion>
-  </Process>
-  <Process name="Cosa">
-    <PID>24</PID>
-    <Quantum>4</Quantum>
-    <TiempoLlegada>1</TiempoLlegada>
-    <TiempoFinalizacion>80</TiempoFinalizacion>
-  </Process>
-  <Process name="Ultimo">
-    <PID>25</PID>
-    <Quantum>2</Quantum>
-    <TiempoLlegada>2</TiempoLlegada>
-    <TiempoFinalizacion>0</TiempoFinalizacion>
-  </Process>
-  <Process name="Dangit">
-    <PID>26</PID>
-    <Quantum>2</Quantum>
-    <TiempoLlegada>0</TiempoLlegada>
-    <TiempoFinalizacion>20</TiempoFinalizacion>
-  </Process>
-  <Process name="Please">
-    <PID>27</PID>
-    <Quantum>3</Quantum>
-    <TiempoLlegada>1</TiempoLlegada>
-    <TiempoFinalizacion>45</TiempoFinalizacion>
-  </Process>
-  <Process name="Work">
-    <PID>28</PID>
-    <Quantum>4</Quantum>
-    <TiempoLlegada>2</TiempoLlegada>
-    <TiempoFinalizacion>80</TiempoFinalizacion>
-  </Process>
-  <Process name="memory">
-    <PID>29</PID>
-    <Quantum>3</Quantum>
-    <TiempoLlegada>0</TiempoLlegada>
-    <TiempoFinalizacion>45</TiempoFinalizacion>
-  </Process>
-  <Process name="try">
-    <PID>30</PID>
-    <Quantum>3</Quantum>
-    <TiempoLlegada>1</TiempoLlegada>
-    <TiempoFinalizacion>45</TiempoFinalizacion>
-  </Process>
-  <Process name="Joder">
-    <PID>31</PID>
-    <Quantum>2</Quantum>
-    <TiempoLlegada>0</TiempoLlegada>
-    <TiempoFinalizacion>20</TiempoFinalizacion>
-  </Process>
-  <Process name="Dang">
-    <PID>32</PID>
-    <Quantum>3</Quantum>
-    <TiempoLlegada>1</TiempoLlegada>
-    <TiempoFinalizacion>45</TiempoFinalizacion>
-  </Process>
-  <Process name="Same">
-    <PID>33</PID>
-    <Quantum>4</Quantum>
-    <TiempoLlegada>2</TiempoLlegada>
-    <TiempoFinalizacion>80</TiempoFinalizacion>
-  </Process>
-  <Process name="yolo">
-    <PID>34</PID>
-    <Quantum>2</Quantum>
-    <TiempoLlegada>0</TiempoLlegada>
-    <TiempoFinalizacion>20</TiempoFinalizacion>
-  </Process>
-  <Process name="WOW">
-    <PID>35</PID>
-    <Quantum>4</Quantum>
-    <TiempoLlegada>1</TiempoLlegada>
-    <TiempoFinalizacion>80</TiempoFinalizacion>
-  </Process>
-  <Process name="esperando">
-    <PID>36</PID>
-    <Quantum>2</Quantum>
-    <TiempoLlegada>0</TiempoLlegada>
-    <TiempoFinalizacion>20</TiempoFinalizacion>
-  </Process>
-  <Process name="cierto">
-    <PID>37</PID>
-    <Quantum>4</Quantum>
-    <TiempoLlegada>1</TiempoLlegada>
-    <TiempoFinalizacion>80</TiempoFinalizacion>
-  </Process>
-  <Process name="Gracias">
-    <PID>38</PID>
-    <Quantum>2</Quantum>
-    <TiempoLlegada>0</TiempoLlegada>
-    <TiempoFinalizacion>20</TiempoFinalizacion>
-  </Process>
-  <Process name="Playit">
-    <PID>39</PID>
-    <Quantum>5</Quantum>
-    <TiempoLlegada>1</TiempoLlegada>
-    <TiempoFinalizacion>125</TiempoFinalizacion>
-  </Process>
-  <Process name="Jodersito">
-    <PID>40</PID>
-    <Quantum>4</Quantum>
-    <TiempoLlegada>2</TiempoLlegada>
-    <TiempoFinalizacion>80</TiempoFinalizacion>
-  </Process>
-  <Process name="workon">
-    <PID>41</PID>
-    <Quantum>3</Quantum>
-    <TiempoLlegada>0</TiempoLlegada>
-    <TiempoFinalizacion>45</TiempoFinalizacion>
-  </Process>
-  <Process name="yes">
-    <PID>42</PID>
-    <Quantum>2</Quantum>
-    <TiempoLlegada>1</TiempoLlegada>
-    <TiempoFinalizacion>20</TiempoFinalizacion>
-  </Process>
-  <Process name="or">
-    <PID>43</PID>
-    <Quantum>5</Quantum>
-    <TiempoLlegada>2</TiempoLlegada>
-    <TiempoFinalizacion>125</TiempoFinalizacion>
-  </Process>
-  <Process name="not">
-    <PID>44</PID>
-    <Quantum>5</Quantum>
+    <Quantum>6</Quantum>
     <TiempoLlegada>3</TiempoLlegada>
-    <TiempoFinalizacion>125</TiempoFinalizacion>
+    <TiempoFinalizacion>180</TiempoFinalizacion>
+  </Process>
+  <Process name="Example5">
+    <PID>5</PID>
+    <Quantum>7</Quantum>
+    <TiempoLlegada>4</TiempoLlegada>
+    <TiempoFinalizacion>245</TiempoFinalizacion>
   </Process>
 </UserProcess>
